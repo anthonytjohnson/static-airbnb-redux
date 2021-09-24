@@ -16,12 +16,12 @@ class FlatList extends Component {
     // TODO: dispatchan action to loat flats
   }
 
-  render() { 
-    return ( 
-      <div className="flat-list col-sm-7"> 
+  render() {
+    return (
+      <div className="flat-list col-sm-7">
         {this.props.flats.map((flat) => <Flat flat={flat} key={flat.name} />)}
-      </div> 
-    ); 
+      </div>
+    );
   }
 }
 
