@@ -1,27 +1,16 @@
-body {
-  font-family: Helvetica;
-}
-
-#root {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+@import "card";
 
 .flat-list {
   display: flex;
   flex-wrap: wrap;
 }
 
-.flat { 
-  flex: 50% 0 0; 
-  cursor: pointer; 
-  border: 6px solid transparent; 
+.flat {
+  flex: 50% 0 0;
+  cursor: pointer;
+  border: 6px solid transparent;
 }
 
-.flat.selected {
-  border: 6px red dashed;
+.selected {
+  border: 6px dashed red;
 }
-
-@import "card";

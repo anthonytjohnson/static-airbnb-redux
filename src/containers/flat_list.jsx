@@ -1,11 +1,25 @@
 import React, { Component } from "react";
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import Flat from "../containers/flat";
+
 import { setFlats } from "../actions";
 
-import Flat from "./flat";
-
 class FlatList extends Component {
+  // static defaultProps = {
+  //   flats: [{
+  //     "name": "Charm at the Steps of Montmartre",
+  //     "imageUrl": "https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat1.jpg",
+  //     "price": 164,
+  //     "priceCurrency": "EUR"
+  //   },{
+  //     "name": "Charm at the Steps of Sacre-Coeur",
+  //     "imageUrl": "https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat1.jpg",
+  //     "price": 164,
+  //     "priceCurrency": "EUR"
+  //   }]
+  // }
+
   componentWillMount() {
     this.props.setFlats();
   }
@@ -13,17 +27,12 @@ class FlatList extends Component {
   render() {
     return (
       <div className="flat-list col-sm-7">
-        {this.props.flats.map((flat) => <Flat flat={flat} key={flat.name} />)}
+        {this.props.flats.map((flat, index) => {
+          return <Flat key={flat.name} flat={flat} tabIndex={index} />;
+        })}
       </div>
     );
   }
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(
-    { setFlats: setFlats },
-    dispatch
-  );
 }
 
 function mapStateToProps(state) {
@@ -32,4 +41,9 @@ function mapStateToProps(state) {
   };
 }
 
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ setFlats }, dispatch);
+}
+
+// export default FlatList;
 export default connect(mapStateToProps, mapDispatchToProps)(FlatList);
